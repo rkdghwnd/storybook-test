@@ -57,7 +57,7 @@ export default function StoryBook_use() {
               </Grid>
               <Box textAlign="center" mt="40px">
                 <Link
-                  to="/"
+                  to="/topic"
                   style={{
                     display: 'flex',
                     justifyContent: 'center',

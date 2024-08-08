@@ -110,7 +110,7 @@ const ServiceDrawer = ({ onClose, User }) => {
                     marginRight="5px"
                   />
                   <ServiceSiderLink
-                    link={'/intro'}
+                    link={'/'}
                     linkName={t('sidebar.storybook_intro')}
                     isNew={false}
                     onClose={onClose}
@@ -125,7 +125,7 @@ const ServiceDrawer = ({ onClose, User }) => {
                     marginRight="5px"
                   />
                   <ServiceSiderLink
-                    link={'/'}
+                    link={'/topic'}
                     linkName={t('sidebar.storybook_topic')}
                     isNew={false}
                   />

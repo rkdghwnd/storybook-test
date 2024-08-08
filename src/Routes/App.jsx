@@ -22,8 +22,8 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<ServiceLayout />}>
-        <Route path="" element={<Topic />} />
-        <Route path="intro" element={<StoryBook_use />} />
+        <Route path="" element={<StoryBook_use />} />
+        <Route path="/topic" element={<Topic />} />
         <Route path="chapter" element={<Chapter />} />
         <Route path="story" element={<Story />} />
         <Route path="title" element={<Title />} />

@@ -91,7 +91,7 @@ const ServiceSider = () => {
                       marginRight="5px"
                     />
                     <ServiceSiderLink
-                      link={'/intro'}
+                      link={'/'}
                       linkName={t('sidebar.storybook_intro')}
                       isNew={false}
                     />
@@ -106,7 +106,7 @@ const ServiceSider = () => {
                       marginRight="5px"
                     />
                     <ServiceSiderLink
-                      link={'/'}
+                      link={'/topic'}
                       linkName={t('sidebar.storybook_topic')}
                       isNew={false}
                     />

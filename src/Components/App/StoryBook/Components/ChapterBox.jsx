@@ -15,7 +15,7 @@ import { drawOutputsState, ProfileState } from '../../../../Config/recoil';
 import axios from 'axios';
 import { t } from 'i18next';
 import styled from 'styled-components';
-import { LoadingText } from '../../../Common/Loading';
+import Loading, { LoadingText } from '../../../Common/Loading';
 
 const BoxLoading = styled(Box)`
   position: absolute;
@@ -79,7 +79,8 @@ const ChapterBox = ({
         url: `${SERVER_URL}/user/prompt/drawingel`,
         headers: { Authorization: 'Bearer ' + token },
         data: {
-          prompt: outputKr || savedContent,
+          prompt:
+            '(글자가 없는 이미지여야합니다) ' + (outputKr || savedContent),
           size: '1024x1024',
           n: 1,
           response_format: 'b64_json',
@@ -145,29 +146,7 @@ const ChapterBox = ({
 
   return (
     <section>
-      {loading && (
-        <BoxLoading>
-          <Flex direction={'column'} align="center" gap="20px">
-            <Spinner
-              thickness="4px"
-              speed="1s"
-              emptyColor="#fff"
-              color="#000"
-              size="xl"
-            />
-            <LoadingText direction="row">
-              <div className="wave">L</div>
-              <div className="wave">o</div>
-              <div className="wave">a</div>
-              <div className="wave">d</div>
-              <div className="wave">i</div>
-              <div className="wave">n</div>
-              <div className="wave">g</div>
-              <div className="wave">...</div>
-            </LoadingText>
-          </Flex>
-        </BoxLoading>
-      )}
+      {loading && <Loading />}
 
       {drawOutputs[index] && (
         <div
@@ -185,7 +164,7 @@ const ChapterBox = ({
             key={drawOutputs[index]?.b64_json}
             src={`data:image/png;base64,${drawOutputs[index]?.b64_json}`}
             style={{
-              border: '2px dashed black',
+              border: '2px dashed #CBAACB',
               borderRadius: '10px',
               transition: 'all 1s ease-in',
             }}
