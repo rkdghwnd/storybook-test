@@ -211,12 +211,12 @@ const ChapterBox = ({
             <Button
               size="md"
               onClick={handleMakeButtonClick}
-              isDisabled={!!outputKr}
+              isDisabled={!!outputKr || isDisabled[index]}
               fontSize="sm"
             >
               만들기
             </Button>
-            <Button onClick={handleRepeat}>
+            <Button onClick={handleRepeat} isDisabled={isDisabled[index]}>
               <RepeatIcon w={4} h={4} />
             </Button>
             <Button
