@@ -101,7 +101,7 @@ const MainDrawer = ({ onClose, isLogin, User }) => {
         {isLogin ? (
           <>
             <Flex align={'center'} gap="10px">
-              <Link to="/service/mypage">
+              <Link to="/mypage">
                 <Avatar
                   bg="#fff"
                   w="50px"
@@ -134,7 +134,7 @@ const MainDrawer = ({ onClose, isLogin, User }) => {
 
       <Box>
         <SiderUl>
-          <Link to="/service/storybook/topic" onClick={onClose}>
+          <Link to="/" onClick={onClose}>
             <li>{t('header.writingel_home')} </li>
           </Link>
         </SiderUl>

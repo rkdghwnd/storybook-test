@@ -2,14 +2,15 @@ import {
   Box,
   Button,
   Flex,
+  Show,
   Text,
   useDisclosure,
   useToast,
 } from '@chakra-ui/react';
 import { useRef, useState } from 'react';
 import useCheckMembership from '../../../Hook/useCheckMembership';
-import { useRecoilValue } from 'recoil';
-import { ChapterState } from '../../../Config/recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { ChapterState, drawOutputsState } from '../../../Config/recoil';
 import { SERVER_URL } from '../../../Config/server';
 import { throttle } from '../../../utill/throttle';
 import { t } from 'i18next';
@@ -25,6 +26,8 @@ const Story = () => {
   const [currentChapterIndex, setCurrentChapterIndex] = useState(0);
   const [isDisabled, setDisabled] = useState({});
 
+  const [drawOutputs, setDrawOutputs] = useRecoilState(drawOutputsState);
+
   const downloadLinkRef = useRef(null);
 
   const isMembership = useCheckMembership();
@@ -38,16 +41,12 @@ const Story = () => {
     ? RecoilChapterIntro.match(/챕터 \d+\)[^]+?(?=챕터 \d+\)|$)/g)
     : [];
 
-  // const chaptersArray = RecoilChapterIntro ? RecoilChapterIntro.match(/챕터 [1-9]\)\./g) : [];
-
   const chaptersDetails = chaptersArray
     ? chaptersArray.map((chapterText) => {
-        // console.log(chapterText)
         const [chapterHeader, rest] = chapterText?.split(').', 2);
 
         const chapterNumber = chapterHeader.match(/챕터 (\d+)/)[1];
-        // const chapterNumber = chapterHeader.match(/챕터/g)[1];
-        // console.log(rest)
+
         const [titleWithPrefix, content] = rest?.split(/[-]\s*/, 2);
 
         const title = titleWithPrefix.trim();
@@ -118,7 +117,7 @@ const Story = () => {
               }));
             }
           }
-
+          setDisabled((prev) => ({ ...prev, [index]: false }));
           break;
         }
 
@@ -203,12 +202,15 @@ const Story = () => {
     setCurrentChapterIndex((prevIndex) => Math.max(prevIndex - 1, 0));
   };
 
+  console.dir(chapterResults);
+
   return (
     <Flex
       w="100%"
       direction={{ base: 'column', lg: 'row' }}
       justify="space-between"
       minH="calc(100vh - 71px)"
+      position={'relative'}
     >
       <Box w="100%">
         <ServiceContentHeader
@@ -231,14 +233,18 @@ const Story = () => {
               <Text className="service-simpleDes">
                 {t('service.storybook_story_description')}
               </Text>
+
               <Flex justifyContent="center" alignItems="center">
-                <Button
-                  onClick={handlePrevChapter}
-                  isDisabled={currentChapterIndex === 0}
-                  m={{ base: '0 10px', sm: '0 50px' }}
-                >
-                  <ChevronLeftIcon w={6} h={6} />
-                </Button>
+                <Show breakpoint={'(min-width: 960px)'}>
+                  <Button
+                    onClick={handlePrevChapter}
+                    isDisabled={currentChapterIndex === 0}
+                    m={{ base: '0 10px', sm: '0 50px' }}
+                  >
+                    <ChevronLeftIcon w={6} h={6} />
+                  </Button>
+                </Show>
+
                 <Box w="100%">
                   {chaptersDetails.map(
                     (chapter, index) =>
@@ -256,20 +262,24 @@ const Story = () => {
                           setDisabled={setDisabled}
                           setChapterResults={setChapterResults}
                           handleRepeat={handleRepeat}
+                          drawOutputs={drawOutputs}
+                          setDrawOutputs={setDrawOutputs}
                         />
                       ),
                   )}
                 </Box>
 
-                <Button
-                  onClick={handleNextChapter}
-                  isDisabled={
-                    currentChapterIndex === chaptersDetails.length - 1
-                  }
-                  m={{ base: '0 10px', sm: '0 50px' }}
-                >
-                  <ChevronRightIcon w={6} h={6} />
-                </Button>
+                <Show breakpoint={'(min-width: 960px)'}>
+                  <Button
+                    onClick={handleNextChapter}
+                    isDisabled={
+                      currentChapterIndex === chaptersDetails.length - 1
+                    }
+                    m={{ base: '0 10px', sm: '0 50px' }}
+                  >
+                    <ChevronRightIcon w={6} h={6} />
+                  </Button>
+                </Show>
               </Flex>
             </Flex>
             <Text
@@ -281,13 +291,36 @@ const Story = () => {
               {currentChapterIndex + 1}/10
             </Text>
             <Flex justifyContent="center" alignItems="center">
+              <Show breakpoint={'(max-width: 960px)'}>
+                <Button
+                  onClick={handlePrevChapter}
+                  isDisabled={currentChapterIndex === 0}
+                  m={{ base: '0 10px', sm: '0 50px' }}
+                >
+                  <ChevronLeftIcon w={6} h={6} />
+                </Button>
+              </Show>
+
               <Button
                 margin="30px"
-                onClick={() => saveDocxFile(chapterResults, chaptersDetails)}
+                onClick={() =>
+                  saveDocxFile({ chapterResults, chaptersDetails, drawOutputs })
+                }
               >
                 {t('service.storybook_story_download_button')}
               </Button>
               <a ref={downloadLinkRef} style={{ display: 'none' }}></a>
+              <Show breakpoint="(max-width: 960px)">
+                <Button
+                  onClick={handleNextChapter}
+                  isDisabled={
+                    currentChapterIndex === chaptersDetails.length - 1
+                  }
+                  m={{ base: '0 10px', sm: '0 50px' }}
+                >
+                  <ChevronRightIcon w={6} h={6} />
+                </Button>
+              </Show>
             </Flex>
           </Flex>
         </Box>

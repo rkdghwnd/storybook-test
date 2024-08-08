@@ -7,12 +7,12 @@ export const SignOut = async () => {
   if (User && User.provider === 'kakao') {
     Kakao.Auth.logout(() => {
       localStorage.clear();
-      window.location.replace('/service/storybook/topic');
+      window.location.replace('/');
     });
   }
   if (User && User.provicder !== 'kakao') {
     await authService.signOut();
     localStorage.clear();
-    window.location.replace('/service/storybook/topic');
+    window.location.replace('/');
   }
 };

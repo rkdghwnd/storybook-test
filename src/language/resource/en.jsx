@@ -361,7 +361,7 @@ const en = {
         faq_payment_question1: '결제 영수증은 어디서 확인할 수 있나요?',
         faq_payment_answer1: `
               라이팅젤 웹사이트 우측 상단 마이페이지 [아이콘]
-            > [마이페이지]에서 구독 상품 항목에 있는 [결제 내역]을
+            > [마이페이지]에서 구독 상품 항목에 있는 [결제 내역]을
             클릭하시면, 결제 관련 내용들을 보실 수 있습니다.`,
         faq_payment_question2: '해외 카드 결제 가능한가요?',
         faq_payment_answer2: `   아쉽게도 현재는 국내(한국)에서 발급된 신용/체크카드로만
@@ -461,11 +461,11 @@ const en = {
         popular: '인기도구',
         storybook: '어린이 문학',
         storybook_intro: '동화책 출간하기',
-        storybook_topic: '- 주제 선정하기',
-        storybook_chapter: '- 챕터 만들기',
-        storybook_story: '- 스토리 만들기',
-        storybook_title: '- 제목 만들기',
-        storybook_publish: '- 출간 하기',
+        storybook_topic: '주제 선정하기',
+        storybook_chapter: '챕터 만들기',
+        storybook_story: '스토리 만들기',
+        storybook_title: '제목 만들기',
+        storybook_publish: '출간 하기',
         writing: '글쓰기',
         writing_mbti_loveletter: 'MBTI 연애편지',
         writing_first_sentence: '첫문장 자판기',
@@ -643,6 +643,14 @@ const en = {
           '이메일 본문을 입력해주시면 간결하게 요약해드립니다.',
         email_summary_description: '이메일 본문을 입력하세요.',
         email_summary_button: '요약하기',
+        storybook_example_title: '출간 동화책 예시',
+        storybook_example1_description:
+          '신비로운 숲과 그 속에 숨겨진 마법의 동물들 이야기',
+        storybook_example2_description:
+          '주인공이 마법의 지팡이를 얻어 별이 반짝이는 밤하늘 아래 모험을 떠나는 이야기',
+        storybook_example3_description:
+          '비밀의 정원을 탐험하면서 다양한 종류의 드래곤들을 만나는 어린 탐험가의 이야기',
+        storybook_start: '동화책 만들기 지금 바로 시작',
         storybook_topic_title: '동화책 출간하기_주제 선정하기',
         storybook_topic_title_tooltip:
           '동화책을 만들기 위한 첫 걸음은 주제를 선정하는 것입니다. 주제 선정에 도움을 드립니다.',
@@ -707,7 +715,6 @@ const en = {
           '2. "동화책 표지 만들기" 버튼을 클릭하여 표지 제작 페이지로 이동합니다.',
         storybook_title_tip_sequence3:
           '3. 표지 디자인이 완성되면 포토샵을 활용하여 앞서 선택한 제목을 표지에 삽입합니다.',
-        storybook_title_tip_draw_message: '동화책 표지 만들기',
         storybook_publication_title: '동화책 출간하기_출간하기',
         storybook_publication_tooltip: '직접 창작한 동화를 출판해보세요',
         storybook_publication_text1: '💡 동화책 출간하기 방법',
@@ -1094,7 +1101,7 @@ const en = {
         word_master_description: '단어를 입력해주세요.',
       },
       tutorial: {
-        title: '🔮 라이팅젤 사용방법',
+        title: '🔮 STORYO 사용방법',
         dont_see_day: '오늘 하루 보지 않기',
         dont_see_forever: '앞으로 튜토리얼 보지 않기',
         sequence1: '1. 원하는 글쓰기 종류를 선택합니다.',

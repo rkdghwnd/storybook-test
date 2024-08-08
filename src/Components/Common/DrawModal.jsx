@@ -118,15 +118,6 @@ export const DrawModal = ({ isOpen, onClose, prompt, outputKr, outputEng }) => {
     saveAs(url, 'draw_image.png');
   };
 
-  const HandleForDrawing = () => {
-    setRecoilForDrawing({
-      ...RecoilForDrawing,
-      outputKr: outputKr,
-      outputEng: outputEng,
-    });
-    navigate('/service/drawing_gel');
-  };
-
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="md">
       <ModalOverlay />
@@ -222,15 +213,11 @@ export const DrawModal = ({ isOpen, onClose, prompt, outputKr, outputEng }) => {
                 gap="5px"
                 mt="10px"
               >
-                {drawOutput ? (
-                  <Button colorScheme="purple" onClick={HandleForDrawing}>
-                    {t('service.draw_modal_more_paint')}
-                  </Button>
-                ) : (
+                {
                   <Button colorScheme="purple" onClick={HandleDrawing}>
                     {t('service.draw_modal_paint')}
                   </Button>
-                )}
+                }
                 <Button
                   colorScheme="yellow"
                   ml={3}

@@ -16,7 +16,7 @@ const LoadingBox = styled(Box)`
   justify-content: center;
 `;
 
-const LoadingText = styled(Flex)`
+export const LoadingText = styled(Flex)`
   font-size: 20px;
   font-weight: 600;
   color: #000;

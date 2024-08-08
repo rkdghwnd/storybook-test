@@ -180,7 +180,7 @@ const Chapter = () => {
                     onClick: nextStep,
                     colorScheme: 'purple',
                     as: Link,
-                    to: '/service/storybook/story',
+                    to: '/story',
                   },
                 },
               ]}

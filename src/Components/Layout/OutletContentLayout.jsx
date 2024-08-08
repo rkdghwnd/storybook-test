@@ -6,7 +6,8 @@ const OutletContentLayout = ({ children }) => {
       w="100%"
       direction={{ base: 'column', '2xl': 'row' }}
       justify="space-between"
-      minH="calc(100vh - 71px)"
+      // minH="calc(100vh - 71px)"
+      // h="100%"
     >
       {children}
     </Flex>

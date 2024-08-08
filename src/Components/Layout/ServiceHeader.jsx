@@ -48,11 +48,11 @@ const ServiceHeader = ({ User }) => {
         </Box>
       )}
       <Flex align="center" gap="20px">
-        <Link to="/service/storybook/topic">
+        <Link to="/">
           <Button>{t('header.main_home')}</Button>
         </Link>
 
-        <Menu>
+        {/* <Menu>
           <MenuButton>
             <Flex alignItems={'center'}>
               <LanguageIcon />
@@ -78,9 +78,9 @@ const ServiceHeader = ({ User }) => {
               <MenuItem>English</MenuItem>
             </Link>
           </MenuList>
-        </Menu>
+        </Menu> */}
 
-        <Link to="/service/mypage">
+        <Link to="/mypage">
           <Avatar
             bg="#fff"
             w="50px"

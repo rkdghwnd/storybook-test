@@ -64,7 +64,7 @@ const DrawHeader = ({ User }) => {
         </Box>
       )}
       <Flex align="center" gap="20px">
-        <Link to="/service/storybook/topic">
+        <Link to="/">
           <Button>{t('header.main_home')}</Button>
         </Link>
 
@@ -96,7 +96,7 @@ const DrawHeader = ({ User }) => {
           </MenuList>
         </Menu>
 
-        <Link to="/service/mypage">
+        <Link to="/mypage">
           <Avatar
             bg="#fff"
             w="50px"

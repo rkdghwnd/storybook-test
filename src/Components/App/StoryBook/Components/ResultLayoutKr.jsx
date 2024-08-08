@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Box, Flex, Tooltip, Text } from '@chakra-ui/react';
 import { DownloadIcon, RepeatIcon } from '@chakra-ui/icons';
-import { Link } from 'react-router-dom';
 import { DrawModal } from '../../../Common/DrawModal';
 
 const ResultLayoutKr = ({
@@ -12,7 +11,6 @@ const ResultLayoutKr = ({
   nextStep,
   additionalContent,
   story,
-  drawMessage,
 }) => {
   const [openDrawing, setOpenDrawing] = useState(false);
 
@@ -41,23 +39,6 @@ const ResultLayoutKr = ({
               <DownloadIcon w={6} h={6} onClick={SaveContent} />
             </Tooltip>
           </Text>
-          {drawMessage && outputKr && (
-            <Link to="/service/drawing_gel">
-              <li style={{ display: 'flex', alignItems: 'center' }}>
-                <Text
-                  display="inline-block"
-                  bg="#7d4cdb"
-                  color="#fff"
-                  borderRadius={'10px'}
-                  p="0px 8px"
-                  fontSize={'xs'}
-                  cursor="pointer"
-                >
-                  {drawMessage}
-                </Text>
-              </li>
-            </Link>
-          )}
         </Flex>
       </Flex>
       {text && outputKr && (

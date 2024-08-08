@@ -1,6 +1,15 @@
 import styled from 'styled-components';
 import { Box, Flex } from '@chakra-ui/react';
 
+export const Logo = styled.h1`
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: #3b2478;
+  color: white;
+  font-weight: 900;
+  text-shadow: 5px 5px 0px #3b2478;
+  font-size: 50px;
+`;
+
 export const HeaderDrawerAvatar = styled(Flex)`
   width: 50px;
   height: 50px;
@@ -132,38 +141,8 @@ export const MakeContentBtn = styled.button`
 export const SiderUl = styled.ul`
   list-style: none;
 
-  > li,
-  > a > li {
-    cursor: pointer;
-    padding: 12px 10px;
-    border-radius: 10px;
-    transition: all 300ms linear;
-
-    &:hover,
-    &:active {
-      font-weight: 600;
-      background-color: #ededed;
-    }
-  }
   h3 {
     padding: 5px 0 5px 22px;
-  }
-
-  > ul {
-    list-style: none;
-
-    > a > li,
-    > li {
-      cursor: pointer;
-      padding: 5px 0 5px 22px;
-      transition: all 300ms linear;
-
-      &:hover,
-      &:active {
-        background-color: #ededed;
-        border-radius: 5px;
-      }
-    }
   }
 `;
 

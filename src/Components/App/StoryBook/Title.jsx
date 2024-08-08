@@ -141,7 +141,6 @@ const Title = () => {
             </Text>
           </Box>
         }
-        drawMessage={t('service.storybook_title_tip_draw_message')}
       ></ResultLayoutKr>
       <CheckMembershipModal isOpen={isOpen} onClose={onClose} />
     </OutletContentLayout>

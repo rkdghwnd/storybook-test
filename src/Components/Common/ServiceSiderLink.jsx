@@ -7,6 +7,7 @@ export const ServiceSiderLink = ({ link, linkName, isNew, onClose }) => {
     backgroundColor: '#ededed',
     borderRadius: '5px',
     fontWeight: 600,
+    padding: '0 15px 0 10px',
   };
 
   return (

@@ -127,7 +127,7 @@ const Login = () => {
         localStorage.setItem('isLogin', true);
         localStorage.setItem('token', LOGIN_TOKEN);
         setLoading(false);
-        navigate('/service/storybook/topic');
+        navigate('/');
       })
       .catch((error) => {
         const errorStatus = error.response.status;
@@ -221,23 +221,6 @@ const Login = () => {
             >
               <AiFillFacebook color="plain" /> {t('login.facebook_login')}
             </button>
-            {/* <div id="naverIdLogin"></div> */}
-            {/* <div
-                  id='naverIdLogin'
-                 // ref={naverRef}
-                  style={{ display: "none" }}
-                ></div>{" "}
-                <button
-                  className='sign-btns naver-btn'
-                  name='naver'
-                  onClick={() => {
-                    //console.log(naverRef.current.children)
-                  //  naverRef.current.children[0].click();
-                  }}
-                >
-                  <img src='/images/btnG_naver.png' alt='naver' />
-                  <span>네이버 로그인</span>
-                </button> */}
           </Flex>
 
           <div className="isChecked">

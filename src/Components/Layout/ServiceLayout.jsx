@@ -11,11 +11,14 @@ import { SERVER_URL } from '../../Config/server';
 import { authService } from '../../Config/Firebase';
 import ServiceSider from './ServiceSider';
 import ServiceHeader from './ServiceHeader';
+import Footer from './Footer';
 
 const Content = styled(Box)`
-  width: 100%;
-  height: 100vh;
-  overflow-y: scroll;
+  width: calc(100vw - 280px);
+
+  @media (max-width: 959px) {
+    width: 100%;
+  }
 `;
 
 const ServiceLayout = () => {
@@ -153,15 +156,17 @@ const ServiceLayout = () => {
         });
       });
   };
+
   return (
     <>
-      <Flex>
+      <Flex borderBottom={'1px solid #ededed'}>
         {isLargerThan960 && <ServiceSider />}
         <Content>
           <ServiceHeader User={User} />
           <Outlet />
         </Content>
       </Flex>
+      <Footer />
     </>
   );
 };

@@ -36,7 +36,7 @@ const MainHeader = ({ isLogin }) => {
       top="0"
       zIndex={'10'}
     >
-      <Link to="/service/storybook/topic">
+      <Link to="/">
         <picture>
           <source
             srcSet="/images/logo.webp"
@@ -50,7 +50,7 @@ const MainHeader = ({ isLogin }) => {
         <Flex gap="35px">
           {/* <MainHeaderMenu isLogin={isLogin} /> */}
           {isLogin ? (
-            <Link to="/service/mypage">
+            <Link to="/mypage">
               <Avatar
                 bg="#fff"
                 w="50px"

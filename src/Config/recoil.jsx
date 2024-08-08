@@ -172,3 +172,8 @@ export const ChapterState = atom({
   key: 'ChapterState',
   default: '',
 });
+
+export const drawOutputsState = atom({
+  key: 'drawOutputsState',
+  default: {},
+});

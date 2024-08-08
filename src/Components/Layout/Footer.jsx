@@ -1,10 +1,8 @@
-import React from 'react';
 import { Box, SimpleGrid, Heading, Text } from '@chakra-ui/react';
 import styled from 'styled-components';
 import { t } from 'i18next';
 
 const FooterContainer = styled.footer`
-  //   border-top: 1px solid #ededed;
   padding: 60px 30px 30px;
   color: #666;
 

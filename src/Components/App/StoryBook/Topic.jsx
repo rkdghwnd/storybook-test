@@ -17,7 +17,7 @@ import TopicMessageInput from './Components/TopicMessageInput';
 import NextChapterButton from './Components/NextChapterButton';
 import ResultLayoutKr from './Components/ResultLayoutKr';
 import { GenericModal } from './Components/GenericModal';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Topic = () => {
   const [nextOpen, setNextOpen] = useState(false);
@@ -65,7 +65,6 @@ const Topic = () => {
   }, 3000);
 
   const streamGPT = useStreamGPT(setOutputKr);
-  const navigate = useNavigate();
 
   const handleTopic = useCallback(async () => {
     setOutputKr('');
@@ -207,7 +206,7 @@ const Topic = () => {
                   props: {
                     colorScheme: 'purple',
                     as: Link,
-                    to: '/service/storybook/chapter',
+                    to: '/chapter',
                   },
                 },
               ]}

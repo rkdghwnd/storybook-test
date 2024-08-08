@@ -199,7 +199,7 @@ const Chapter = () => {
                   출력된 챕터가 자동 입력되며, 수정이 가능합니다.
                 </ModalBody>
                 <ModalFooter>
-                  <Link to="/service/storybook/story">
+                  <Link to="/story">
                     <Button colorScheme={'purple'}>스토리 만들기로 이동</Button>
                   </Link>
                 </ModalFooter>

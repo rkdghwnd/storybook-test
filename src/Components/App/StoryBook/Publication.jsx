@@ -1,6 +1,8 @@
 import { Box, Flex, Text } from '@chakra-ui/react';
 
 import { t } from 'i18next';
+import OutletContentLayout from '../../Layout/OutletContentLayout';
+import ServiceContentHeader from '../../Common/ServiceContentHeader';
 
 const Publication = () => {
   return (

@@ -5,10 +5,11 @@ import {
   TextRun,
   SectionType,
   AlignmentType,
+  ImageRun,
 } from 'docx';
 import { saveAs } from 'file-saver';
 
-const createParagraph = (
+const createStoryParagraph = (
   text,
   bold = false,
   size = 32,
@@ -31,10 +32,14 @@ const createParagraph = (
   });
 };
 
-export const saveDocxFile = (chapterResults, chapterDetails) => {
+export const saveDocxFile = ({
+  chapterResults,
+  chaptersDetails,
+  drawOutputs,
+}) => {
   const firstPageBoldText = `
 \n\n
-🌱 라이팅젤 동화책 출간하기
+🌱 STORYO 동화책 출간하기
 `;
 
   const firstPageText = `
@@ -49,30 +54,55 @@ export const saveDocxFile = (chapterResults, chapterDetails) => {
 
   const firstPageBoldParagraphs = firstPageBoldText
     .split('\n')
-    .map((line) => createParagraph(line, true, 38, AlignmentType.CENTER));
+    .map((line) => createStoryParagraph(line, true, 38, AlignmentType.CENTER));
 
   const firstPageParagraphs = firstPageText
     .split('\n')
-    .map((line) => createParagraph(line, false));
+    .map((line) => createStoryParagraph(line, false));
 
   const firstPageRestText = `
-모든 컨텐츠 저작권은 (주)라이팅젤, (주)작가와에 있습니다.
+모든 컨텐츠 저작권은 (주)STORYO, (주)작가와에 있습니다.
 * 저작권법에 의해 보호 받는 저작물이므로 무단전개와 복제를 금합니다.
 `;
+
+  const storybookMaterials = chaptersDetails.map(
+    ({ chapterNumber, title, content }, index) => {
+      return [
+        { type: 'image', data: drawOutputs[index]?.b64_json },
+        { type: 'text', data: chapterResults[index] },
+      ];
+    },
+  );
+
   // 챕터 결과들의 Paragraph 생성
-  const storyParagraphs = Object.entries(chapterResults).map(
-    ([index, result]) =>
-      createParagraph(
-        `${chapterDetails[index].chapterNumber} ${chapterDetails[index].title} \n\n\n\n ${result}`,
+  const storyParagraphs = Object.entries(
+    storybookMaterials.flat().filter((el) => el.data),
+  ).map(([index, result]) => {
+    if (result.type === 'text') {
+      return createStoryParagraph(
+        `${chaptersDetails[index].chapterNumber} ${chaptersDetails[index].title} \n\n\n\n ${result.data}`,
         false,
         28,
-      ),
-  );
+      );
+    } else if (result.type === 'image' && result.data) {
+      return new Paragraph({
+        children: [
+          new ImageRun({
+            data: `data:image/png;base64,${result.data}`,
+            transformation: {
+              width: 500,
+              height: 500,
+            },
+          }),
+        ],
+      });
+    }
+  });
 
   // 첫 페이지의 나머지 텍스트 Paragraph 생성
   const firstPageRestParagraphs = firstPageRestText
     .split('\n')
-    .map((line) => createParagraph(line, false, 28));
+    .map((line) => createStoryParagraph(line, false, 28));
 
   // 문서 생성
   const doc = new Document({
