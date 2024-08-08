@@ -39,6 +39,7 @@ const ChapterBox = ({
   isDisabled,
   setChapterResults,
   handleRepeat,
+  chapterResults,
 }) => {
   const toast = useToast();
 
@@ -129,6 +130,7 @@ const ChapterBox = ({
     const newValue = event.target.value;
     setChapterText(newValue);
     localStorage.setItem(`outputKr_${chapter.chapterNumber}`, newValue);
+
     setChapterResults((prevResults) => ({
       ...prevResults,
       [prevResults.index !== chapter.chapterNumber &&

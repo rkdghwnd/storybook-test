@@ -10,7 +10,11 @@ import {
 import { useRef, useState } from 'react';
 import useCheckMembership from '../../../Hook/useCheckMembership';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { ChapterState, drawOutputsState } from '../../../Config/recoil';
+import {
+  chapterResultsState,
+  ChapterState,
+  drawOutputsState,
+} from '../../../Config/recoil';
 import { SERVER_URL } from '../../../Config/server';
 import { throttle } from '../../../utill/throttle';
 import { t } from 'i18next';
@@ -22,7 +26,8 @@ import CheckMembershipModal from '../../Common/CheckMembershipModal';
 
 const Story = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [chapterResults, setChapterResults] = useState({});
+  const [chapterResults, setChapterResults] =
+    useRecoilState(chapterResultsState);
   const [currentChapterIndex, setCurrentChapterIndex] = useState(0);
   const [isDisabled, setDisabled] = useState({});
 
@@ -164,6 +169,7 @@ const Story = () => {
   const handleRepeat = throttle(() => {
     if (chapterResults[currentChapterIndex]) {
       // 현재 챕터의 내용을 지우고 상태를 업데이트
+
       setChapterResults((prevResults) => ({
         ...prevResults,
         [currentChapterIndex]: '', // 현재 챕터의 내용을 초기화
@@ -260,6 +266,7 @@ const Story = () => {
                           outputKr={chapterResults[index]}
                           isDisabled={isDisabled}
                           setDisabled={setDisabled}
+                          chapterResults={chapterResults}
                           setChapterResults={setChapterResults}
                           handleRepeat={handleRepeat}
                           drawOutputs={drawOutputs}
